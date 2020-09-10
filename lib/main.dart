@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:quizzler/quizbrain.dart';
 void main() => runApp(Quizzler());
 
 class Quizzler extends StatelessWidget {
@@ -7,10 +7,10 @@ class Quizzler extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.grey.shade900,
+        backgroundColor: Colors.teal[900],
         body: SafeArea(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10.0),
+            padding: EdgeInsets.symmetric(horizontal: 10),
             child: QuizPage(),
           ),
         ),
@@ -26,6 +26,9 @@ class QuizPage extends StatefulWidget {
 
 class _QuizPageState extends State<QuizPage> {
   @override
+  int i = 0;
+  QuizBrain quizBrainobj = QuizBrain();
+  List<Widget> icons = [];
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -37,7 +40,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                'This is where the question text will go.',
+                quizBrainobj.questionObjects[i].questionText,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -51,6 +54,9 @@ class _QuizPageState extends State<QuizPage> {
           child: Padding(
             padding: EdgeInsets.all(15.0),
             child: FlatButton(
+              shape: RoundedRectangleBorder(
+                  side: BorderSide(color: Colors.green[400]),
+                  borderRadius: BorderRadius.circular(20)),
               textColor: Colors.white,
               color: Colors.green,
               child: Text(
@@ -61,7 +67,24 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                //The user picked true.
+                bool correctAnswer = quizBrainobj.questionObjects[i].questionAnswer;
+                if (correctAnswer == true) {
+                  icons.add(Icon(
+                    Icons.check,
+                    color: Colors.green,
+                  ));
+                } else {
+                  icons.add(Icon(
+                    Icons.close,
+                    color: Colors.red,
+                  ));
+                }
+                setState(() {
+                  i++;
+                  if (i >= quizBrainobj.questionObjects.length) {
+                    i = 0;
+                  }
+                }); //The user picked true.
               },
             ),
           ),
@@ -70,6 +93,8 @@ class _QuizPageState extends State<QuizPage> {
           child: Padding(
             padding: EdgeInsets.all(15.0),
             child: FlatButton(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20)),
               color: Colors.red,
               child: Text(
                 'False',
@@ -79,12 +104,32 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                //The user picked false.
+                bool correctAnswer = quizBrainobj.questionObjects[i].questionAnswer;
+                if (correctAnswer == false) {
+                  icons.add(Icon(
+                    Icons.check,
+                    color: Colors.green,
+                  ));
+                } else {
+                  icons.add(Icon(
+                    Icons.close,
+                    color: Colors.red,
+                  ));
+                }
+                setState(() {
+                  i++;
+                  if (i >= quizBrainobj.questionObjects.length) {
+                    i = 0;
+                  }
+                }); //The user picked false.
               },
             ),
           ),
         ),
         //TODO: Add a Row here as your score keeper
+        Row(
+          children: icons,
+        ),
       ],
     );
   }
