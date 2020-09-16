@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quizzler/quizbrain.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
+
 void main() => runApp(Quizzler());
 
 class Quizzler extends StatelessWidget {
@@ -67,22 +69,32 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                bool correctAnswer = quizBrainobj.questionObjects[i].questionAnswer;
-                if (correctAnswer == true) {
-                  icons.add(Icon(
-                    Icons.check,
-                    color: Colors.green,
-                  ));
-                } else {
-                  icons.add(Icon(
-                    Icons.close,
-                    color: Colors.red,
-                  ));
+                bool correctAnswer =
+                    quizBrainobj.questionObjects[i].questionAnswer;
+                if(i < quizBrainobj.questionObjects.length - 1)
+                {
+                  if (correctAnswer == true) {
+                    icons.add(Icon(
+                      Icons.check,
+                      color: Colors.green,
+                    ));
+                  } else {
+                    icons.add(Icon(
+                      Icons.close,
+                      color: Colors.red,
+                    ));
+                  }
                 }
                 setState(() {
-                  i++;
-                  if (i >= quizBrainobj.questionObjects.length) {
-                    i = 0;
+                  if (i < quizBrainobj.questionObjects.length - 1) {
+                    i++;
+                  }
+                  else {
+                    Alert(
+                      context: context,
+                      title: "No Questions Left",
+                      desc: "You have Answered All the Questions",
+                    ).show();
                   }
                 }); //The user picked true.
               },
@@ -104,22 +116,33 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                bool correctAnswer = quizBrainobj.questionObjects[i].questionAnswer;
-                if (correctAnswer == false) {
+                bool correctAnswer =
+                    quizBrainobj.questionObjects[i].questionAnswer;
+                if(i<quizBrainobj.questionObjects.length - 1)
+                {
+                  if (correctAnswer == false) {
                   icons.add(Icon(
                     Icons.check,
                     color: Colors.green,
                   ));
-                } else {
+                }
+                  else {
                   icons.add(Icon(
                     Icons.close,
                     color: Colors.red,
                   ));
                 }
+                }
                 setState(() {
-                  i++;
-                  if (i >= quizBrainobj.questionObjects.length) {
-                    i = 0;
+                  if (i < quizBrainobj.questionObjects.length - 1) {
+                    i++;
+                  }
+                  else {
+                    Alert(
+                      context: context,
+                      title: "No Questions Left",
+                      desc: "You have Answered All the Questions",
+                    ).show();
                   }
                 }); //The user picked false.
               },
