@@ -9,7 +9,7 @@ class Quizzler extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.teal[900],
+        backgroundColor: Colors.blueGrey[900],
         body: SafeArea(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 10),
@@ -94,7 +94,23 @@ class _QuizPageState extends State<QuizPage> {
                       context: context,
                       title: "No Questions Left",
                       desc: "You have Answered All the Questions",
+                      buttons: [
+                        DialogButton(
+                          child: Text(
+                            "OK",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                              color: Colors.white70,
+                            ),
+                          ),
+                          onPressed: () => Navigator.pop(context),
+                          width: 120,
+                        ),
+                      ],
                     ).show();
+                    i=0;
+                    icons.clear();
                   }
                 }); //The user picked true.
               },
@@ -142,7 +158,23 @@ class _QuizPageState extends State<QuizPage> {
                       context: context,
                       title: "No Questions Left",
                       desc: "You have Answered All the Questions",
+                      buttons: [
+                        DialogButton(
+                          child: Text(
+                            "OK",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                              color: Colors.white70,
+                            ),
+                          ),
+                          onPressed: () => Navigator.pop(context),
+                          width: 120,
+                        ),
+                      ],
                     ).show();
+                    i=0;
+                    icons.clear();
                   }
                 }); //The user picked false.
               },
