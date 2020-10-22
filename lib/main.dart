@@ -71,8 +71,7 @@ class _QuizPageState extends State<QuizPage> {
               onPressed: () {
                 bool correctAnswer =
                     quizBrainobj.questionObjects[i].questionAnswer;
-                if(i < quizBrainobj.questionObjects.length - 1)
-                {
+                if (i < quizBrainobj.questionObjects.length - 1) {
                   if (correctAnswer == true) {
                     icons.add(Icon(
                       Icons.check,
@@ -88,8 +87,7 @@ class _QuizPageState extends State<QuizPage> {
                 setState(() {
                   if (i < quizBrainobj.questionObjects.length - 1) {
                     i++;
-                  }
-                  else {
+                  } else {
                     Alert(
                       context: context,
                       title: "No Questions Left",
@@ -109,7 +107,7 @@ class _QuizPageState extends State<QuizPage> {
                         ),
                       ],
                     ).show();
-                    i=0;
+                    i = 0;
                     icons.clear();
                   }
                 }); //The user picked true.
@@ -134,26 +132,23 @@ class _QuizPageState extends State<QuizPage> {
               onPressed: () {
                 bool correctAnswer =
                     quizBrainobj.questionObjects[i].questionAnswer;
-                if(i<quizBrainobj.questionObjects.length - 1)
-                {
+                if (i < quizBrainobj.questionObjects.length - 1) {
                   if (correctAnswer == false) {
-                  icons.add(Icon(
-                    Icons.check,
-                    color: Colors.green,
-                  ));
-                }
-                  else {
-                  icons.add(Icon(
-                    Icons.close,
-                    color: Colors.red,
-                  ));
-                }
+                    icons.add(Icon(
+                      Icons.check,
+                      color: Colors.green,
+                    ));
+                  } else {
+                    icons.add(Icon(
+                      Icons.close,
+                      color: Colors.red,
+                    ));
+                  }
                 }
                 setState(() {
                   if (i < quizBrainobj.questionObjects.length - 1) {
                     i++;
-                  }
-                  else {
+                  } else {
                     Alert(
                       context: context,
                       title: "No Questions Left",
@@ -173,7 +168,7 @@ class _QuizPageState extends State<QuizPage> {
                         ),
                       ],
                     ).show();
-                    i=0;
+                    i = 0;
                     icons.clear();
                   }
                 }); //The user picked false.
@@ -181,7 +176,6 @@ class _QuizPageState extends State<QuizPage> {
             ),
           ),
         ),
-        //TODO: Add a Row here as your score keeper
         Row(
           children: icons,
         ),
@@ -189,9 +183,3 @@ class _QuizPageState extends State<QuizPage> {
     );
   }
 }
-
-/*
-question1: 'You can lead a cow down stairs but not up stairs.', false,
-question2: 'Approximately one quarter of human bones are in the feet.', true,
-question3: 'A slug\'s blood is green.', true,
-*/
