@@ -45,6 +45,8 @@ class _QuizPageState extends State<QuizPage> {
                 quizBrainobj.questionObjects[i].questionText,
                 textAlign: TextAlign.center,
                 style: TextStyle(
+                  fontFamily: 'Open Sans Pro',
+                  fontWeight: FontWeight.bold,
                   fontSize: 25.0,
                   color: Colors.white,
                 ),
