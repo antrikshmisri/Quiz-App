@@ -66,6 +66,8 @@ class _QuizPageState extends State<QuizPage> {
               child: Text(
                 'True',
                 style: TextStyle(
+                  fontFamily: 'Open Sans Pro',
+                  fontWeight: FontWeight.bold,
                   color: Colors.white,
                   fontSize: 20.0,
                 ),
@@ -127,6 +129,8 @@ class _QuizPageState extends State<QuizPage> {
               child: Text(
                 'False',
                 style: TextStyle(
+                  fontFamily: 'Open Sans Pro',
+                  fontWeight: FontWeight.bold,
                   fontSize: 20.0,
                   color: Colors.white,
                 ),
