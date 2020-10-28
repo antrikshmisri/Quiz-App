@@ -14,3 +14,11 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+flutter:
+
+
+  uses-material-design: true
+  fonts:
+    - family: Open Sans Pro
+      fonts:
+        - asset: fonts/OpenSans-Regular.ttf
